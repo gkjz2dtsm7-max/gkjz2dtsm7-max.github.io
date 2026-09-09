@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>North Carrollton Public Money Brief</title>
+    <meta
+      name="description"
+      content="Public, read-only archive of grants and awards reaching North Carrollton, Carrollton, and Carroll County, Mississippi. Reviewed 8 September 2026. Open 24/7. No account. No edits."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0a0a0a;
+        --paper: #f4f1ea;
+        --signal: #e10600;
+        --hazard: #ffd100;
+        --muted: #c9c2b6;
+        --line: #d4cdc0;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      }
+      a { color: var(--hazard); }
+      .skip {
+        position: absolute;
+        left: 0.75rem;
+        top: -4rem;
+        z-index: 50;
+        background: var(--hazard);
+        color: var(--ink);
+        padding: 0.65rem 1rem;
+        font-weight: 700;
+      }
+      .skip:focus { top: 0.75rem; }
+      .hazard { height: 6px; background: var(--hazard); }
+      .banner {
+        background: var(--paper);
+        color: var(--ink);
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        padding: 0.55rem 1rem;
+      }
+      header, main, footer { max-width: 64rem; margin: 0 auto; padding: 2rem 1.25rem; }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        max-width: none;
+      }
+      header > div, header > p { max-width: 64rem; }
+      header .wrap {
+        max-width: 64rem;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .kicker {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--hazard);
+        margin: 0;
+      }
+      h1 {
+        font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+        font-size: clamp(3rem, 8vw, 4.5rem);
+        line-height: 0.9;
+        letter-spacing: 0.04em;
+        margin: 0.4rem 0 0;
+        font-weight: 400;
+      }
+      h1 span { display: block; color: var(--signal); }
+      .lede { max-width: 20rem; font-size: 0.95rem; line-height: 1.5; color: var(--muted); margin: 0; }
+      .stats { display: grid; gap: 0.75rem; }
+      @media (min-width: 640px) { .stats { grid-template-columns: repeat(3, 1fr); } }
+      .stat {
+        border: 1px solid rgba(212,205,192,0.3);
+        background: rgba(244,241,234,0.04);
+        padding: 1rem;
+      }
+      .stat p { margin: 0; }
+      .stat .label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+      .stat .value {
+        font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+        font-size: 2.4rem;
+        color: var(--hazard);
+        margin-top: 0.4rem;
+        letter-spacing: 0.04em;
+      }
+      .stat .hint { margin-top: 0.4rem; font-size: 0.9rem; color: var(--muted); }
+      h2 {
+        font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+        font-size: 2rem;
+        letter-spacing: 0.04em;
+        font-weight: 400;
+        margin: 0;
+      }
+      .section-label { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 3rem; }
+      .section-label .n { font-family: "Bebas Neue", sans-serif; font-size: 1.6rem; color: var(--signal); }
+      .muted { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+      .files { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 0.75rem; }
+      .file {
+        border: 1px solid rgba(212,205,192,0.3);
+        background: rgba(244,241,234,0.05);
+        padding: 1rem 1.15rem;
+      }
+      .file h3 { margin: 0; font-size: 1rem; }
+      .file p { margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--muted); }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.85rem; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0.55rem 1rem;
+        background: var(--hazard);
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .btn:hover { background: var(--paper); }
+      .btn-ghost {
+        background: transparent;
+        color: var(--hazard);
+        border: 1px solid rgba(255,209,0,0.4);
+      }
+      .btn-ghost:hover { color: var(--paper); border-color: var(--paper); }
+      table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+      .table-wrap { overflow-x: auto; border: 1px solid rgba(212,205,192,0.3); margin-top: 1.25rem; }
+      th { background: var(--paper); color: var(--ink); text-align: left; padding: 0.75rem 1rem; }
+      td { padding: 0.75rem 1rem; vertical-align: top; border-top: 1px solid rgba(212,205,192,0.2); }
+      td.place { color: var(--hazard); }
+      td.amt { font-weight: 700; white-space: nowrap; }
+      .note { color: var(--muted); font-size: 0.85rem; margin-top: 0.25rem; }
+      .cards { display: grid; gap: 1.5rem; margin-top: 3rem; }
+      @media (min-width: 768px) { .cards { grid-template-columns: 1fr 1fr; } }
+      .card { border: 1px solid rgba(212,205,192,0.3); padding: 1.25rem; }
+      .card h2 { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hazard); font-family: "IBM Plex Sans", sans-serif; font-weight: 700; }
+      .card p { margin: 0.75rem 0 0; font-size: 0.95rem; line-height: 1.55; }
+      footer {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        max-width: none;
+        color: var(--muted);
+        font-size: 0.8rem;
+        line-height: 1.55;
+      }
+      footer .wrap { max-width: 64rem; margin: 0 auto; }
+      @media print {
+        .no-print { display: none !important; }
+        html, body { background: white; color: black; }
+        a { color: black; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to main content</a>
+    <div class="hazard" aria-hidden="true"></div>
+    <p class="banner">Public archive · Read only · No account · Open 24/7 through 8 October 2026 · Does not close</p>
+    <header>
+      <div class="wrap">
+        <div>
+          <p class="kicker">Working public-records file</p>
+          <h1>North Carrollton<span>Public Money Brief</span></h1>
+        </div>
+        <p class="lede">
+          Carroll County, Mississippi. Frozen public record as of 8 September 2026. Anyone may read, print, or save a copy. This site has no editor.
+        </p>
+      </div>
+    </header>
+    <main id="main">
+      <section class="stats" aria-label="Confirmed totals">
+        <div class="stat">
+          <p class="label">Confirmed in window</p>
+          <p class="value">$808,378</p>
+          <p class="hint">FEMA streets + DRA + TAP</p>
+        </div>
+        <div class="stat">
+          <p class="label">Town cash overlay</p>
+          <p class="value">$15,000</p>
+          <p class="hint">Cemetery and Jefferson, Aug 2025</p>
+        </div>
+        <div class="stat">
+          <p class="label">CDBG request, not awarded</p>
+          <p class="value">$600,000</p>
+          <p class="hint">May 2024 application. Off the 18 May 2026 list.</p>
+        </div>
+      </section>
+
+      <div class="section-label">
+        <span class="n" aria-hidden="true">01</span>
+        <h2>Files</h2>
+      </div>
+      <p class="muted">Tap Open PDF to read the file in your browser. That is the reliable path on phones and tablets. Save PDF stores a copy. The zip is for computers.</p>
+      <p class="no-print" style="margin-top:1rem">
+        <a class="btn" href="North-Carrollton-Public-Money-Brief-2026-09-08.zip" download="North-Carrollton-Public-Money-Brief-2026-09-08.zip">Save all three PDFs (657 KB zip)</a>
+      </p>
+      <ul class="files">
+        <li class="file">
+          <h3>North Carrollton grant brief</h3>
+          <p>Town, Carrollton, and county awards. 9 pages. 23 KB.</p>
+          <div class="actions no-print">
+            <a class="btn" href="NCPDD-Grant-Money-Brief-North-Carrollton-Carrollton-Carroll-County.pdf">Open PDF</a>
+            <a class="btn btn-ghost" href="NCPDD-Grant-Money-Brief-North-Carrollton-Carrollton-Carroll-County.pdf" download="NCPDD-Grant-Money-Brief-North-Carrollton-Carrollton-Carroll-County.pdf">Save PDF</a>
+          </div>
+        </li>
+        <li class="file">
+          <h3>NCPDD payouts working file</h3>
+          <p>990 grants paid and named awards, 2021 to 2026. 14 pages. 524 KB.</p>
+          <div class="actions no-print">
+            <a class="btn" href="NCPDD-WINONA-GRANTS-PAYOUTS-2021-2026.pdf">Open PDF</a>
+            <a class="btn btn-ghost" href="NCPDD-WINONA-GRANTS-PAYOUTS-2021-2026.pdf" download="NCPDD-WINONA-GRANTS-PAYOUTS-2021-2026.pdf">Save PDF</a>
+          </div>
+        </li>
+        <li class="file">
+          <h3>Bank of Winona and NCPDD file</h3>
+          <p>CDFI awards to the bank. UEI CMBTY4NJGAF5. 9 pages. 324 KB.</p>
+          <div class="actions no-print">
+            <a class="btn" href="WINONA-BANK-AND-NCPDD-CONNECTION.pdf">Open PDF</a>
+            <a class="btn btn-ghost" href="WINONA-BANK-AND-NCPDD-CONNECTION.pdf" download="WINONA-BANK-AND-NCPDD-CONNECTION.pdf">Save PDF</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="section-label">
+        <span class="n" aria-hidden="true">02</span>
+        <h2>Line items</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption class="skip" style="position:static;clip:auto;width:auto;height:auto;overflow:visible;top:auto;background:transparent;color:var(--muted);padding:0.5rem 1rem;font-weight:500;letter-spacing:0;text-transform:none">
+            Public awards for North Carrollton, Carroll County, and NCPDD reviewed 8 September 2026
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Place</th>
+              <th scope="col">Award</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="place">North Carrollton</td>
+              <td>DRA SEDAP streets, George and Morgan<div class="note">Delta Regional Authority. Town recipient.</div></td>
+              <td class="amt">$162,378</td>
+              <td>Announced 8 Dec 2025. Exact figure on the 11 Dec statewide list.</td>
+            </tr>
+            <tr>
+              <td class="place">North Carrollton</td>
+              <td>FEMA Public Assistance streets<div class="note">Cemetery, Colvin, Johnson Alley, Morgan near JZG, Mill Drive.</div></td>
+              <td class="amt">$289,000</td>
+              <td>Approved 23 Dec 2025</td>
+            </tr>
+            <tr>
+              <td class="place">North Carrollton</td>
+              <td>TAP Big Sand Creek recreation<div class="note">Federal Transportation Alternatives Program.</div></td>
+              <td class="amt">$357,000</td>
+              <td>Reported 16 Feb 2022</td>
+            </tr>
+            <tr>
+              <td class="place">North Carrollton</td>
+              <td>CDBG sewer, 2020 cycle<div class="note">MDA project 1137-20-278-PF-01. Mayor-page dollar.</div></td>
+              <td class="amt">$449,000</td>
+              <td>2020-2021 window edge</td>
+            </tr>
+            <tr>
+              <td class="place">North Carrollton</td>
+              <td>FEMA sewer, same pairing<div class="note">Paired with the CDBG sewer line on the mayor page.</div></td>
+              <td class="amt">$323,000</td>
+              <td>2020-2021 window edge</td>
+            </tr>
+            <tr>
+              <td class="place">Carroll County</td>
+              <td>DRA SEDAP County Road 430<div class="note">County recipient. Not a town award.</div></td>
+              <td class="amt">$501,037</td>
+              <td>Announced 8 Dec 2025. Exact figure on the 11 Dec statewide list.</td>
+            </tr>
+            <tr>
+              <td class="place">NCPDD</td>
+              <td>Regional Small Business Development Center<div class="note">Award to the planning district, not the Town. Separate from DRA streets.</div></td>
+              <td class="amt">$553,730</td>
+              <td>Announced 11 Dec 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h2>Held as two awards</h2>
+          <p>The $553,730 Small Business Development Center award is to North Central Planning and Development District. The $162,378 DRA street award is to the Town of North Carrollton. Different recipient, different program, different day. They are not the same money.</p>
+        </article>
+        <article class="card">
+          <h2>Packager vs recipient</h2>
+          <p>NCPDD is the Local Development District. Most community awards in this file are written to the town or county. Bank of Winona CDFI awards are institutional receipts at 312 N Applegate, Winona, not town-hall awards.</p>
+        </article>
+      </div>
+    </main>
+    <footer>
+      <div class="wrap">
+        <p>Compiled by BRIK Creative, LLC from public records reviewed 8 September 2026. This site has no sign-in and no editor. It stays open 24/7 through at least 8 October 2026 and does not close on its own. Window-edge CDBG and FEMA sewer dollars rest on the Town mayor page and are not MDA-certified amounts. 2023 Bank of Winona BEA is $437,350 per the CDFI Award Book.</p>
+      </div>
+    </footer>
+  </body>
+</html>
